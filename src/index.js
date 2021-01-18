@@ -19,7 +19,9 @@ window.setState = (changes) => {
 }
 
 let initialState = {
-  name: 'Desta'
+  name: 'Desta',
+  // eslint-disable-next-line no-restricted-globals
+  location: location.pathname.replace(/^\/?|\/$/g,"")
 }
 
 window.setState(initialState);

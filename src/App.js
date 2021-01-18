@@ -12,7 +12,29 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 
+import Main from './components/Main';
+import Secret from './components/Secret';
+import NotFound from './components/NotFound';
+import CallBack from './components/CallBack';
+
 function App(props) {
+
+  let mainComponent =  '';
+  switch (props.location) {
+    case '':
+      mainComponent = <Main />
+      break;
+    case 'secret':
+      mainComponent = <Secret />
+      break;
+    case 'callback':
+      mainComponent = <CallBack />
+      break;
+    default:
+      mainComponent = <NotFound />
+      break;
+  }
+
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
@@ -32,6 +54,7 @@ function App(props) {
             >
               Learn Chakra, {props.name}!
             </Link>
+            {mainComponent}
           </VStack>
         </Grid>
       </Box>

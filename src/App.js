@@ -22,7 +22,7 @@ function App(props) {
   let mainComponent =  '';
   switch (props.location) {
     case '':
-      mainComponent = <Main />
+      mainComponent = <Main {...props}/>
       break;
     case 'secret':
       mainComponent = <Secret />

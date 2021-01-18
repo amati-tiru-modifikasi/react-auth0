@@ -4,7 +4,7 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-               Main Komponen 
+               Main Komponen ... {this.props.name}
             </div>
         )
     }

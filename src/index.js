@@ -5,13 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <StrictMode>
-    <ColorModeScript />
-    <App />
-  </StrictMode>,
-  document.getElementById('root')
-);
+let state = {} ;
+window.setState = (changes) => {
+  state = Object.assign({}, state, changes);
+
+  ReactDOM.render(
+    <StrictMode>
+      <ColorModeScript />
+      <App {...state} />
+    </StrictMode>,
+    document.getElementById('root')
+  );
+}
+
+let initialState = {
+  name: 'Desta'
+}
+
+window.setState(initialState);
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -5,27 +5,36 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 
-let state = {} ;
-window.setState = (changes) => {
+import Auth from './Auth';
+import { Auth0Provider } from '@auth0/auth0-react';
+
+let state = {};
+window.setState = changes => {
   state = Object.assign({}, state, changes);
 
   ReactDOM.render(
     <StrictMode>
       <ColorModeScript />
-      <App {...state} />
+      <Auth0Provider
+        domain="topidesta.jp.auth0.com"
+        clientId="Uu45GtWjpKV7y6eP3Cd4IotBTXgDhp1D"
+        redirectUri="http://localhost:3000/callback"
+      >
+        <App {...state} />
+      </Auth0Provider>
     </StrictMode>,
     document.getElementById('root')
   );
-}
+};
 
 let initialState = {
   name: 'Desta',
   // eslint-disable-next-line no-restricted-globals
-  location: location.pathname.replace(/^\/?|\/$/g,"")
-}
+  location: location.pathname.replace(/^\/?|\/$/g, ''),
+  auth: <Auth />,
+};
 
 window.setState(initialState);
-
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

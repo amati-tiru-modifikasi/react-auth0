@@ -7,11 +7,9 @@ export default class Main extends Component {
       <div>
         Mau masuk ke Area Rahasia?
         <br />
-        <Link color="teal.500" href="/secret">
-          Area Rahasia!
+        <Link color="teal.500" href="#">
+          {this.props.auth}
         </Link>
-        <br />
-        Contoh Props -> {this.props.name}
       </div>
     );
   }
